@@ -7,11 +7,11 @@ A Action that installs or upgrades the **SUSE Observability Agent** on any Kuber
 ---
 
 ## Prerequisites
-1. Access to the cluster, add the KUBECONFIG secret in your repository by navigating to Settings → Secrets and variables → Actions.
+1. Access to the cluster, add the **KUBECONFIG** secret in your repository by navigating to Settings → Secrets and variables → Actions.
 
 2. Obtain an API Key from your SUSE Observability cluster.
 Go to Stackpacks → Kubernetes → Add New Instance, then enter the name of the cluster you want to observe.
-After adding it, click Create New Service Token and add that token as a repository secret (stackstate_API_Key).
+After adding it, click Create New Service Token and add that token as a repository secret (**stackstate_API_Key**).
 
 ## Features
 
