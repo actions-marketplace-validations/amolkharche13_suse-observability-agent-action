@@ -54,8 +54,8 @@ runs:
         version: 'latest'
 
     - name: Ensure namespace exists
-        shell: bash
-        run: |
+      shell: bash
+      run: |
           if ! kubectl get ns "${Namespace}" >/dev/null 2>&1; then
             kubectl create ns "${Namespace}"
             echo "Namespace ${Namespace} created"
