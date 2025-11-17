@@ -100,14 +100,11 @@ with:
 
 ---
 
-## 🧪 Local testing tips
+## Local testing tips
 
 To manually replicate the action logic for debugging:
 
 ```bash
-# Ensure you use the correct kubeconfig/context
-kubectl config use-context <your-context>
-
 # Add and update helm repo
 helm repo add suse-observability https://charts.rancher.com/server-charts/prime/suse-observability || true
 helm repo update
