@@ -20,13 +20,13 @@ A GitHub Action that installs or upgrades the **SUSE Observability Agent** on an
 
 | Input name                | Required |                               Default                               | Description                                                                     |
 | ------------------------- | :------: | :-----------------------------------------------------------------: | ------------------------------------------------------------------------------- |
-| `stackstate_API_Key`      |    Yes   |                                  —                                  | StackState API key (mark as secret) from cluster.                                            |
+| `stackstate_API_Key`      |    Yes   |                                  —                                  | StackState API key (mark as secret) from cluster.                               |
 | `stackstateClusterName`   |    Yes   |                                  —                                  | Logical name of the observed Kubernetes cluster.                                |
-| `stackstate_URL`          |    Yes   |                                  —                                  | SUSE Observability receiver endpoint URL (eg. `https://.../receiver/stsAgent`). |
+| `stackstate_URL`          |    Yes   |                                  —                                  | SUSE Observability receiver endpoint URL (eg. `https://.../receiver/stsAgent`)  |
 | `Namespace`               |    No    |                         `suse-observability`                        | Namespace to install into.                                                      |
 | `HelmRepo`                |    No    | `https://charts.rancher.com/server-charts/prime/suse-observability` | Helm repo URL (or repo name if already configured).                             |
 | `ChartName`               |    No    |            `suse-observability/suse-observability-agent`            | Helm chart reference (repo/chart or chart if repo is added).                    |
-| `ChartVersion`            |    No    |                               *empty*                               | Sspecific chart version. If empty, the latest chart is used.               |
+| `ChartVersion`            |    No    |                               *empty*                               | Sspecific chart version. If empty, the latest chart is used.                    |
 | `NodeagentskipTLSVerify`  |    No    |                                `true`                               | Set `nodeAgent.skipKubeletTLSVerify` (boolean as string: `true`/`false`).       |
 | `GlobalskipSslValidation` |    No    |                               `false`                               | Set `global.skipSslValidation` (boolean as string: `true`/`false`).             |
 
