@@ -52,7 +52,7 @@ jobs:
           kubeconfig: ${{ secrets.KUBECONFIG }}
 
       - name: Install SUSE Observability Agent
-        uses: amolkharche13/suse-observability-agent-action@1.0.0-alpha
+        uses: amolkharche13/suse-observability-agent-action@1.0.0-beta
         with:
           stackstate_API_Key: ${{ secrets.stackstate_API_Key }}
           stackstateClusterName: 'cluster_name'
