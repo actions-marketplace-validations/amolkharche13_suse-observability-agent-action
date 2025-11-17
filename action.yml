@@ -63,9 +63,9 @@ runs:
             echo "Namespace "${{inputs.Namespace}}" already exists"
           fi
           
-          VERSION_ARG=""
-            if [[ -n "${inputs.ChartVersion:-}" ]]; then
-              VERSION_ARG="--version ${inputs.ChartVersion}"
+          Chart_Version_Arg=""
+            if [[ -n "${inputs.ChartVersion}" ]]; then
+              Chart_Version_Arg="--version ${inputs.ChartVersion}"
             fi
 
     - name: Add Helm repo (if HelmRepo provided)
@@ -81,4 +81,4 @@ runs:
           --set-string 'stackstate.cluster.name'=${{inputs.stackstateClusterName}} \
           --set-string 'stackstate.url'=${{inputs.stackstate_URL}} \
           --set "nodeAgent.skipKubeletTLSVerify"=${{inputs.NodeagentskipTLSVerify}} \
-          --set "global.skipSslValidation"=${{inputs.GlobalskipSslValidation}} ${VERSION_ARG}
+          --set "global.skipSslValidation"=${{inputs.GlobalskipSslValidation}} ${Chart_Version_Arg}
