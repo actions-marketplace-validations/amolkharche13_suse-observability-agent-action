@@ -150,5 +150,3 @@ helm upgrade --install suse-observability-agent suse-observability/suse-observab
 **amolk** — contributions welcome. Open issues or PRs to improve the action.
 
 ---
-
-If you want a badge, marketplace metadata, or a small logo for the repo, I can add those next.
