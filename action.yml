@@ -55,15 +55,7 @@ runs:
         # attempt to add the repo (if value is a URL this will add; if it's an existing repo name this will harmlessly fail)
         helm repo add suse-observability "${{ inputs.HelmRepo }}" || true
         helm repo update
-      
-        set -euo pipefail
-
-        # Build version arg if provided
-        VERSION_ARG=""
-        if [[ -n "${CHART_VERSION}" ]]; then
-          VERSION_ARG="--version ${CHART_VERSION}"
-        fi
-
+    
         helm upgrade --install suse-observability-agent suse-observability/suse-observability-agent \
           --namespace "${NAMESPACE}" --create-namespace \
           --set-string "stackstate.apiKey=${STACKSTATE_API_KEY}" \
