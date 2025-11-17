@@ -20,6 +20,25 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Configure kubeconfig from secret (if using secret)
+        if: ${{ secrets.KUBECONFIG != '' }}
+        run: |
+          mkdir -p $HOME/.kube
+          echo "${{ secrets.KUBECONFIG }}" > $HOME/.kube/config
+          chmod 600 $HOME/.kube/config
+
+      # Show contexts (debugging)
+      - name: Setup kubectl (for the workflow) and show contexts
+        uses: azure/setup-kubectl@v3
+        with:
+          version: 'latest'
+
+      - name: Ensure helm is available in the workflow (optional, action will also setup helm)
+        uses: azure/setup-helm@v3
+        with:
+          version: 'latest'
+      
+
       - name: Use action to install SUSE Observability Agent
         uses: ./.action.yaml
         with:
