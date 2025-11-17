@@ -52,12 +52,7 @@ runs:
       uses: azure/setup-helm@v3
       with:
         version: 'latest'
-
-    - name: Ensure namespace exists
-      shell: bash
-      run: |
-        kubectl get ns "${{ inputs.Namespace }}" --ignore-not-found || kubectl create ns "${{ inputs.Namespace }}"
-
+        
     - name: Add Helm repo (if HelmRepo provided)
       shell: bash
       if: ${{ inputs.HelmRepo != '' }}
@@ -65,18 +60,6 @@ runs:
         # attempt to add the repo (if value is a URL this will add; if it's an existing repo name this will harmlessly fail)
         helm repo add suse-observability "${{ inputs.HelmRepo }}" || true
         helm repo update
-
-    - name: Install or upgrade SUSE Observability Agent
-      shell: bash
-      env:
-        STACKSTATE_API_KEY: ${{ inputs.stackstate_API_Key }}
-        STACKSTATE_URL: ${{ inputs.stackstate_URL }}
-        CLUSTER_NAME: ${{ inputs.stackstateClusterName }}
-        NAMESPACE: ${{ inputs.Namespace }}
-        CHART_NAME: ${{ inputs.ChartName }}
-        CHART_VERSION: ${{ inputs.ChartVersion }}
-        NODEAGENT_SKIP_TLS_VERIFY: ${{ inputs.NodeagentskipTLSVerify }}
-        GLOBAL_SKIP_SSL_VALIDATION: ${{ inputs.GlobalskipSslValidation }}
       run: |
         set -euo pipefail
 
