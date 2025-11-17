@@ -43,16 +43,11 @@ runs:
     - name: Repo checkout
       uses: actions/checkout@v4
 
-    - name: Setup kubectl
-      uses: azure/setup-kubectl@v3
-      with:
-        version: 'latest'
-
     - name: Setup Helm
       uses: azure/setup-helm@v3
       with:
         version: 'latest'
-        
+
     - name: Add Helm repo (if HelmRepo provided)
       shell: bash
       if: ${{ inputs.HelmRepo != '' }}

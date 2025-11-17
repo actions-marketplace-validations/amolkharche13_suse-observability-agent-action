@@ -10,10 +10,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup kubectl
+        uses: azure/setup-kubectl@v3
+        with:
+          version: 'latest'
+
       - name: Configure kubeconfig from secret (if provided)
         shell: bash
         run: |
           export KUBECONFIG=${{ secrets.KUBECONFIG}}
+
+
 
       - name: Ensure namespace exists
         shell: bash
