@@ -27,7 +27,6 @@ inputs:
   ChartVersion:
     description: "Choose specific chart version ,if not specified latest will be install."
     required: false
-    default: ""
   NodeagentskipTLSVerify:
     description: "Boolean: whether to set nodeAgent.skipKubeletTLSVerify (true/false)."
     required: false
