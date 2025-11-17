@@ -27,6 +27,7 @@ inputs:
   ChartVersion:
     description: "Choose specific chart version ,if not specified latest will be install."
     required: false
+    default: ""
   NodeagentskipTLSVerify:
     description: "Boolean: whether to set nodeAgent.skipKubeletTLSVerify (true/false)."
     required: false
@@ -61,6 +62,11 @@ runs:
           else
             echo "Namespace "${{inputs.Namespace}}" already exists"
           fi
+          
+          VERSION_ARG=""
+            if [[ -n "${inputs.ChartVersion:-}" ]]; then
+              VERSION_ARG="--version ${inputs.ChartVersion}"
+            fi
 
     - name: Add Helm repo (if HelmRepo provided)
       shell: bash
@@ -75,4 +81,4 @@ runs:
           --set-string 'stackstate.cluster.name'=${{inputs.stackstateClusterName}} \
           --set-string 'stackstate.url'=${{inputs.stackstate_URL}} \
           --set "nodeAgent.skipKubeletTLSVerify"=${{inputs.NodeagentskipTLSVerify}} \
-          --set "global.skipSslValidation"=${{inputs.GlobalskipSslValidation}} --version ${{inputs.ChartVersion}}
+          --set "global.skipSslValidation"=${{inputs.GlobalskipSslValidation}} ${VERSION_ARG}
