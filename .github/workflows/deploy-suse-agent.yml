@@ -1,4 +1,4 @@
-name: Install SUSE Observability Agent
+name: Install SUSE Observability Agent 
 
 on:
   push:
