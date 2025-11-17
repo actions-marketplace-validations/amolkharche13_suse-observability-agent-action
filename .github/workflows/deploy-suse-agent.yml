@@ -4,6 +4,8 @@ on:
   push:
 
 jobs:
+  env:
+    Namespace: "suse-observability"   # define if you want to use different
   deploy:
     runs-on: ubuntu-latest
     steps:
@@ -38,4 +40,4 @@ jobs:
           stackstate_API_Key: ${{ secrets.stackstate_API_Key }}
           stackstateClusterName: "testing-amolk"
           stackstate_URL: "https://rancher-hosted.app.stackstate.io/receiver/stsAgent"
-          Namespace: "suse-observability"  # optional 
+          Namespace: "${{ env.Namespace }}"
