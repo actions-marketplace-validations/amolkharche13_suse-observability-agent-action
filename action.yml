@@ -25,7 +25,7 @@ inputs:
     required: false
     default: "suse-observability/suse-observability-agent"
   ChartVersion:
-    description: "Optional chart version constraint."
+    description: "Choose specific chart version ,if not specified latest will be install."
     required: false
     default: ""
   NodeagentskipTLSVerify:
@@ -67,7 +67,6 @@ runs:
       shell: bash
       if: ${{ inputs.HelmRepo != '' }}
       run: |
-        # attempt to add the repo (if value is a URL this will add; if it's an existing repo name this will harmlessly fail)
         helm repo add suse-observability "${{ inputs.HelmRepo }}" || true
         helm repo update
     
