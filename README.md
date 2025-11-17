@@ -6,7 +6,7 @@ A GitHub Action that installs or upgrades the **SUSE Observability Agent** on an
 
 ---
 
-## 🚀 Features
+## Features
 
 * ✅ Automatic namespace creation
 * ✅ Install or upgrade SUSE Observability Agent via Helm
@@ -16,23 +16,23 @@ A GitHub Action that installs or upgrades the **SUSE Observability Agent** on an
 
 ---
 
-## 📥 Inputs
+## Inputs
 
 | Input name                | Required |                               Default                               | Description                                                                     |
 | ------------------------- | :------: | :-----------------------------------------------------------------: | ------------------------------------------------------------------------------- |
-| `stackstate_API_Key`      |    Yes   |                                  —                                  | StackState API key (mark as secret).                                            |
+| `stackstate_API_Key`      |    Yes   |                                  —                                  | StackState API key (mark as secret) from cluster.                                            |
 | `stackstateClusterName`   |    Yes   |                                  —                                  | Logical name of the observed Kubernetes cluster.                                |
 | `stackstate_URL`          |    Yes   |                                  —                                  | SUSE Observability receiver endpoint URL (eg. `https://.../receiver/stsAgent`). |
 | `Namespace`               |    No    |                         `suse-observability`                        | Namespace to install into.                                                      |
 | `HelmRepo`                |    No    | `https://charts.rancher.com/server-charts/prime/suse-observability` | Helm repo URL (or repo name if already configured).                             |
 | `ChartName`               |    No    |            `suse-observability/suse-observability-agent`            | Helm chart reference (repo/chart or chart if repo is added).                    |
-| `ChartVersion`            |    No    |                               *empty*                               | Pin a specific chart version. If empty, the latest chart is used.               |
+| `ChartVersion`            |    No    |                               *empty*                               | Sspecific chart version. If empty, the latest chart is used.               |
 | `NodeagentskipTLSVerify`  |    No    |                                `true`                               | Set `nodeAgent.skipKubeletTLSVerify` (boolean as string: `true`/`false`).       |
 | `GlobalskipSslValidation` |    No    |                               `false`                               | Set `global.skipSslValidation` (boolean as string: `true`/`false`).             |
 
 ---
 
-## 🛠️ How it works
+## How it works
 
 1. Ensures the target namespace exists (creates it if missing).
 2. Adds the Helm repo (if provided) and updates local index.
@@ -41,7 +41,7 @@ A GitHub Action that installs or upgrades the **SUSE Observability Agent** on an
 
 ---
 
-## ✅ Example: workflow (.github/workflows/deploy-suse-agent.yml)
+## Example: workflow (.github/workflows/deploy-suse-agent.yml)
 
 ```yaml
 name: Install SUSE Observability Agent
@@ -68,19 +68,19 @@ jobs:
         with:
           stackstate_API_Key: ${{ secrets.stackstate_API_Key }}
           stackstateClusterName: 'testing-amolk'
-          stackstate_URL: 'https://stackstate.io/receiver/stsAgent'
+          stackstate_URL: 'https://example.stackstate.io/receiver/stsAgent'
           Namespace: 'suse-observability'
 ```
 
 ---
 
-## ⚙️ Example: optional inputs
+## Example: optional inputs
 
 Install a specific chart version:
 
 ```yaml
 with:
-  ChartVersion: "1.4.0"
+  ChartVersion: "1.1.2"
 ```
 
 Install into a different namespace:
@@ -121,7 +121,7 @@ helm upgrade --install suse-observability-agent suse-observability/suse-observab
 
 ---
 
-## 🛟 Troubleshooting
+## Troubleshooting
 
 * **`Error: flag needs an argument: --version`**
 
@@ -145,8 +145,8 @@ helm upgrade --install suse-observability-agent suse-observability/suse-observab
 
 ---
 
-## 🧑‍💻 Maintainer
+## Maintainer
 
-**amolk** — contributions welcome. Open issues or PRs to improve the action.
+**[amolk](https://github.com/amolkharche13)** — contributions welcome. Open issues or PRs to improve the action.
 
 ---
