@@ -2,7 +2,7 @@
 
 [![Action Status](https://img.shields.io/badge/action-ready-brightgreen.svg)]()
 
-A GitHub Action that installs or upgrades the **SUSE Observability Agent** on any Kubernetes cluster using **Helm**.
+A Action that installs or upgrades the **SUSE Observability Agent** on any Kubernetes cluster using **Helm**.
 
 ---
 
