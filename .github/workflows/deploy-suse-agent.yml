@@ -15,12 +15,11 @@ jobs:
         with:
           version: 'latest'
 
-      - name: Configure kubeconfig from secret (if provided)
-        shell: bash
-        run: |
-          export KUBECONFIG=${{ secrets.KUBECONFIG}}
-
-
+      - name: Setup Kubeconfig
+        uses: azure/k8s-set-context@v4
+        with:
+          method: kubeconfig
+          kubeconfig: ${{secrets.KUBECONFIG}}
 
       - name: Ensure namespace exists
         shell: bash
