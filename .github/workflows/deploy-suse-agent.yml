@@ -41,3 +41,4 @@ jobs:
           stackstateClusterName: 'testing-amolk'
           stackstate_URL: 'https://rancher-hosted.app.stackstate.io/receiver/stsAgent'
           Namespace: "${{ env.Namespace }}"
+          ChartVersion: 1.1.2
